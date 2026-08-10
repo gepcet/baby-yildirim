@@ -1,5 +1,3 @@
-<!-- admin.html -->
-
 <!DOCTYPE html>
 <html lang="tr">
 
@@ -10,7 +8,7 @@
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<title>Minik Yıldırım | Admin</title>
+<title>Minik Yıldırım | Yönetim</title>
 
 <link rel="preconnect"
 href="https://fonts.googleapis.com">
@@ -25,132 +23,377 @@ rel="stylesheet">
 <style>
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 body{
 
-font-family:Poppins,sans-serif;
+    font-family:'Poppins',sans-serif;
 
-background:#FFF9F5;
+    background:#EFF0F2;
 
-padding:40px;
+    color:#444;
 
-color:#444;
+    min-height:100vh;
+
+    padding:40px 20px;
 
 }
 
 .container{
 
-max-width:1100px;
+    max-width:1100px;
 
-margin:auto;
-
-}
-
-h1{
-
-margin-bottom:30px;
+    margin:auto;
 
 }
 
-.cards{
+.header{
 
-display:grid;
+    text-align:center;
 
-grid-template-columns:repeat(3,1fr);
-
-gap:20px;
-
-margin-bottom:35px;
+    margin-bottom:40px;
 
 }
 
-.card{
+.header h1{
 
-background:white;
+    font-size:32px;
 
-padding:30px;
-
-border-radius:22px;
-
-box-shadow:0 10px 30px rgba(0,0,0,.08);
-
-text-align:center;
+    margin-bottom:8px;
 
 }
 
-.number{
+.header p{
 
-font-size:42px;
+    color:#888;
 
-font-weight:bold;
+}
 
-margin-top:10px;
+
+/* ÖZET KARTLARI */
+
+.summary{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:20px;
+
+    margin-bottom:35px;
+
+}
+
+.summary-card{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:25px;
+
+    text-align:center;
+
+    box-shadow:
+    0 10px 30px
+    rgba(0,0,0,.06);
+
+}
+
+.summary-label{
+
+    color:#888;
+
+    font-size:14px;
+
+}
+
+.summary-number{
+
+    font-size:38px;
+
+    font-weight:600;
+
+    margin-top:8px;
+
+}
+
+
+/* TAHMİN DAĞILIMI */
+
+.prediction-box{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:30px;
+
+    margin-bottom:35px;
+
+    box-shadow:
+    0 10px 30px
+    rgba(0,0,0,.06);
+
+}
+
+.prediction-box h2{
+
+    font-size:20px;
+
+    margin-bottom:25px;
+
+}
+
+.predictions{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:20px;
+
+}
+
+.prediction{
+
+    padding:20px;
+
+    border-radius:16px;
+
+    text-align:center;
+
+}
+
+.prediction.girl{
+
+    background:#FFF0F5;
+
+}
+
+.prediction.boy{
+
+    background:#EEF7FF;
+
+}
+
+.prediction .emoji{
+
+    font-size:30px;
+
+}
+
+.prediction .count{
+
+    font-size:30px;
+
+    font-weight:600;
+
+    margin-top:5px;
+
+}
+
+
+/* MESAJLAR */
+
+.messages{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:30px;
+
+    box-shadow:
+    0 10px 30px
+    rgba(0,0,0,.06);
+
+}
+
+.messages-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+.messages-header h2{
+
+    font-size:20px;
+
+}
+
+.refresh{
+
+    border:none;
+
+    background:#F1F1F1;
+
+    padding:10px 16px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-family:inherit;
+
+}
+
+.refresh:hover{
+
+    background:#E7E7E7;
+
+}
+
+
+/* TABLO */
+
+.table-wrapper{
+
+    overflow-x:auto;
 
 }
 
 table{
 
-width:100%;
+    width:100%;
 
-border-collapse:collapse;
+    border-collapse:collapse;
 
-background:white;
+}
 
-border-radius:20px;
+thead{
 
-overflow:hidden;
-
-box-shadow:0 10px 30px rgba(0,0,0,.08);
+    background:#F7F7F7;
 
 }
 
 th{
 
-background:#F6F6F6;
+    text-align:left;
 
-padding:18px;
+    padding:15px;
 
-text-align:left;
+    font-size:13px;
+
+    color:#777;
+
+    white-space:nowrap;
 
 }
 
 td{
 
-padding:18px;
+    padding:17px 15px;
 
-border-top:1px solid #eee;
+    border-top:1px solid #eee;
 
-vertical-align:top;
+    vertical-align:top;
 
-}
-
-.message{
-
-max-width:500px;
-
-line-height:1.6;
+    font-size:14px;
 
 }
 
-@media(max-width:850px){
+td.name{
 
-.cards{
+    font-weight:600;
 
-grid-template-columns:1fr;
+    white-space:nowrap;
+
+}
+
+td.message{
+
+    line-height:1.6;
+
+    min-width:300px;
 
 }
 
-table{
+.prediction-tag{
 
-display:block;
+    display:inline-block;
 
-overflow:auto;
+    padding:6px 10px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    white-space:nowrap;
 
 }
+
+.prediction-tag.girl{
+
+    background:#FFF0F5;
+
+    color:#D46A91;
+
+}
+
+.prediction-tag.boy{
+
+    background:#EEF7FF;
+
+    color:#4D9AD8;
+
+}
+
+.empty{
+
+    text-align:center;
+
+    padding:40px;
+
+    color:#999;
+
+}
+
+
+/* MOBİL */
+
+@media(max-width:700px){
+
+    body{
+
+        padding:25px 12px;
+
+    }
+
+    .summary{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .predictions{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .messages{
+
+        padding:20px;
+
+    }
+
+    .header h1{
+
+        font-size:26px;
+
+    }
 
 }
 
@@ -158,203 +401,630 @@ overflow:auto;
 
 </head>
 
+
 <body>
 
 <div class="container">
 
-<h1>☁️ Minik Yıldırım Admin ⚡</h1>
 
-<div class="cards">
+<!-- BAŞLIK -->
 
-<div class="card">
+<div class="header">
 
-<div>Toplam Mesaj</div>
+    <h1>☁️ Minik Yıldırım ⚡</h1>
 
-<div
-id="messageCount"
-class="number">
-
-0
-
-</div>
-
-</div>
-
-<div class="card">
-
-<div>🩷 Kız Tahmini</div>
-
-<div
-id="girlCount"
-class="number">
-
-0
-
-</div>
-
-</div>
-
-<div class="card">
-
-<div>💙 Erkek Tahmini</div>
-
-<div
-id="boyCount"
-class="number">
-
-0
-
-</div>
-
-</div>
+    <p>
+        Tahminler ve bebeğimize bırakılan güzel mesajlar
+    </p>
 
 </div>
 
 
-<table>
+<!-- ÖZET -->
 
-<thead>
+<div class="summary">
 
-<tr>
+    <div class="summary-card">
 
-<th>İsim</th>
+        <div class="summary-label">
+            Toplam Tahmin
+        </div>
 
-<th>Tahmin</th>
+        <div
+            id="totalPredictions"
+            class="summary-number">
 
-<th>Mesaj</th>
+            0
 
-</tr>
+        </div>
 
-</thead>
+    </div>
 
-<tbody id="table">
 
-</tbody>
+    <div class="summary-card">
 
-</table>
+        <div class="summary-label">
+            Toplam Mesaj
+        </div>
+
+        <div
+            id="totalMessages"
+            class="summary-number">
+
+            0
+
+        </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+        <div class="summary-label">
+            Katılım
+        </div>
+
+        <div
+            id="uniqueParticipants"
+            class="summary-number">
+
+            0
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- TAHMİNLER -->
+
+<div class="prediction-box">
+
+    <h2>Tahmin Dağılımı</h2>
+
+    <div class="predictions">
+
+
+        <div class="prediction girl">
+
+            <div class="emoji">
+                🩷
+            </div>
+
+            <div
+                id="girlCount"
+                class="count">
+
+                0
+
+            </div>
+
+            <div>
+                Kız
+            </div>
+
+        </div>
+
+
+        <div class="prediction boy">
+
+            <div class="emoji">
+                💙
+            </div>
+
+            <div
+                id="boyCount"
+                class="count">
+
+                0
+
+            </div>
+
+            <div>
+                Erkek
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- MESAJLAR -->
+
+<div class="messages">
+
+    <div class="messages-header">
+
+        <h2>💌 Bebeğimize Bırakılan Mesajlar</h2>
+
+        <button
+            class="refresh"
+            onclick="loadDashboard()">
+
+            🔄 Yenile
+
+        </button>
+
+    </div>
+
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        İsim
+                    </th>
+
+                    <th>
+                        Tahmin
+                    </th>
+
+                    <th>
+                        Mesaj
+                    </th>
+
+                    <th>
+                        Tarih
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="messageTable">
+
+                <tr>
+
+                    <td
+                        colspan="4"
+                        class="empty">
+
+                        Mesajlar yükleniyor...
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
 
 </div>
 
 
 <script type="module">
 
-import { initializeApp }
+import {
+    initializeApp
+}
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
 
 import {
 
-getFirestore,
+    getFirestore,
 
-collection,
+    collection,
 
-getDocs,
+    getDocs,
 
-query,
+    query,
 
-orderBy
+    orderBy
 
 }
-
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-const firebaseConfig={
 
-apiKey:"YOUR_API_KEY",
+const firebaseConfig = {
 
-authDomain:"YOUR_PROJECT.firebaseapp.com",
+    apiKey:
+    "AIzaSyBnr7ItRJZoCApnimGhKkOySWK6BQNfXNc",
 
-projectId:"YOUR_PROJECT_ID",
+    authDomain:
+    "baby-yildirim.firebaseapp.com",
 
-storageBucket:"YOUR_PROJECT.firebasestorage.app",
+    projectId:
+    "baby-yildirim",
 
-messagingSenderId:"XXXXXXXX",
+    storageBucket:
+    "baby-yildirim.firebasestorage.app",
 
-appId:"XXXXXXXX"
+    messagingSenderId:
+    "1046244114876",
+
+    appId:
+    "1:1046244114876:web:319ec1995b5686b251ebb9"
 
 };
 
-const app=initializeApp(firebaseConfig);
 
-const db=getFirestore(app);
-
-load();
+const app =
+    initializeApp(firebaseConfig);
 
 
-async function load(){
+const db =
+    getFirestore(app);
 
-let girl=0;
-let boy=0;
 
-const predictions=await getDocs(
+/* DASHBOARD */
 
-collection(db,"predictions")
+async function loadDashboard(){
 
-);
+    try{
 
-predictions.forEach(doc=>{
+        /*
+         * TAHMİNLER
+         */
 
-if(doc.data().prediction==="girl"){
+        const predictionSnapshot =
+            await getDocs(
+                collection(
+                    db,
+                    "predictions"
+                )
+            );
 
-girl++;
+
+        let girl = 0;
+
+        let boy = 0;
+
+
+        predictionSnapshot.forEach(
+            (doc) => {
+
+                const data =
+                    doc.data();
+
+
+                if(
+                    data.prediction === "girl"
+                ){
+
+                    girl++;
+
+                }
+
+                if(
+                    data.prediction === "boy"
+                ){
+
+                    boy++;
+
+                }
+
+            }
+        );
+
+
+        const total =
+            girl + boy;
+
+
+        document.getElementById(
+            "girlCount"
+        ).textContent = girl;
+
+
+        document.getElementById(
+            "boyCount"
+        ).textContent = boy;
+
+
+        document.getElementById(
+            "totalPredictions"
+        ).textContent = total;
+
+
+        /*
+         * MESAJLAR
+         */
+
+        const messageQuery =
+            query(
+
+                collection(
+                    db,
+                    "messages"
+                ),
+
+                orderBy(
+                    "createdAt",
+                    "desc"
+                )
+
+            );
+
+
+        const messageSnapshot =
+            await getDocs(
+                messageQuery
+            );
+
+
+        document.getElementById(
+            "totalMessages"
+        ).textContent =
+            messageSnapshot.size;
+
+
+        /*
+         * MESAJ TABLOSU
+         */
+
+        const table =
+            document.getElementById(
+                "messageTable"
+            );
+
+
+        table.innerHTML = "";
+
+
+        if(
+            messageSnapshot.empty
+        ){
+
+            table.innerHTML = `
+
+                <tr>
+
+                    <td
+                        colspan="4"
+                        class="empty">
+
+                        Henüz mesaj bırakılmamış. ❤️
+
+                    </td>
+
+                </tr>
+
+            `;
+
+            return;
+
+        }
+
+
+        messageSnapshot.forEach(
+            (doc) => {
+
+                const data =
+                    doc.data();
+
+
+                let predictionText =
+                    "—";
+
+                let predictionClass =
+                    "";
+
+
+                if(
+                    data.prediction === "girl"
+                ){
+
+                    predictionText =
+                        "🩷 Kız";
+
+                    predictionClass =
+                        "girl";
+
+                }
+
+
+                if(
+                    data.prediction === "boy"
+                ){
+
+                    predictionText =
+                        "💙 Erkek";
+
+                    predictionClass =
+                        "boy";
+
+                }
+
+
+                let dateText =
+                    "—";
+
+
+                if(
+                    data.createdAt
+                ){
+
+                    const date =
+                        data.createdAt
+                        .toDate();
+
+
+                    dateText =
+                        date.toLocaleDateString(
+                            "tr-TR",
+                            {
+                                day:"2-digit",
+                                month:"2-digit",
+                                year:"numeric"
+                            }
+                        )
+                        +
+                        " "
+                        +
+                        date.toLocaleTimeString(
+                            "tr-TR",
+                            {
+                                hour:"2-digit",
+                                minute:"2-digit"
+                            }
+                        );
+
+                }
+
+
+                const row =
+                    document.createElement(
+                        "tr"
+                    );
+
+
+                row.innerHTML = `
+
+                    <td class="name">
+
+                        ${escapeHtml(
+                            data.name || ""
+                        )}
+
+                    </td>
+
+
+                    <td>
+
+                        <span
+                            class="prediction-tag ${predictionClass}">
+
+                            ${predictionText}
+
+                        </span>
+
+                    </td>
+
+
+                    <td class="message">
+
+                        ${escapeHtml(
+                            data.message || ""
+                        )}
+
+                    </td>
+
+
+                    <td>
+
+                        ${dateText}
+
+                    </td>
+
+                `;
+
+
+                table.appendChild(row);
+
+            }
+        );
+
+
+        /*
+         * KATILIM
+         *
+         * Aynı kişinin hem tahmin
+         * hem mesaj bırakması durumunda
+         * iki kez saymamak için isimleri
+         * topluyoruz.
+         */
+
+        const names =
+            new Set();
+
+
+        messageSnapshot.forEach(
+            (doc) => {
+
+                const name =
+                    doc.data().name;
+
+                if(name){
+
+                    names.add(
+                        name.trim()
+                    );
+
+                }
+
+            }
+        );
+
+
+        document.getElementById(
+            "uniqueParticipants"
+        ).textContent =
+            names.size;
+
+
+    }
+    catch(error){
+
+        console.error(
+            "Dashboard yüklenemedi:",
+            error
+        );
+
+
+        document.getElementById(
+            "messageTable"
+        ).innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="4"
+                    class="empty">
+
+                    Veriler yüklenirken
+                    bir hata oluştu.
+
+                </td>
+
+            </tr>
+
+        `;
+
+    }
 
 }
-else{
-
-boy++;
-
-}
-
-});
-
-document.getElementById("girlCount").innerHTML=girl;
-
-document.getElementById("boyCount").innerHTML=boy;
 
 
+/*
+ * HTML güvenliği
+ */
 
-const q=query(
+function escapeHtml(value){
 
-collection(db,"messages"),
+    return String(value)
 
-orderBy("createdAt","desc")
+        .replaceAll("&","&amp;")
 
-);
+        .replaceAll("<","&lt;")
 
-const snapshot=await getDocs(q);
+        .replaceAll(">","&gt;")
 
-document.getElementById("messageCount").innerHTML=snapshot.size;
+        .replaceAll('"',"&quot;")
 
-snapshot.forEach(doc=>{
-
-const d=doc.data();
-
-const row=`
-
-<tr>
-
-<td>${d.name}</td>
-
-<td>
-
-${d.prediction=="girl"?"🩷 Kız":"💙 Erkek"}
-
-</td>
-
-<td class="message">
-
-${d.message}
-
-</td>
-
-</tr>
-
-`;
-
-table.innerHTML+=row;
-
-});
+        .replaceAll("'","&#039;");
 
 }
+
+
+window.loadDashboard =
+    loadDashboard;
+
+
+loadDashboard();
 
 </script>
 
