@@ -1,7 +1,9 @@
 // script.js
 
 const CONFIG = {
-    gender: "boy" // "boy" veya "girl"
+    gender: "girl", //"boy",
+    babyName: "Ela", //"Aras",
+    babyNameDative: "Ela'ya" //"Aras'a"
 };
 
 let prediction = "";
@@ -16,6 +18,9 @@ const stats = document.getElementById("stats");
 
 const balloon = document.getElementById("balloon");
 const heart = document.getElementById("heart");
+const babyName = document.getElementById("babyName");
+const revealMessage = document.getElementById("revealMessage");
+const messageTitle = document.getElementById("messageTitle");
 
 function choose(value){
 
@@ -101,6 +106,29 @@ function showReveal(){
     else{
 
         heart.innerHTML="🩷";
+
+    }
+
+    messageTitle.innerHTML =
+        CONFIG.babyNameDative + " Bir Not Bırak";
+
+    const correct =
+        prediction === CONFIG.gender;
+
+    if(correct){
+
+        revealMessage.innerHTML =
+            CONFIG.gender === "boy"
+                ? `Tebrikler, doğru tahmin!🎉<br>Minik ${CONFIG.babyName} aramıza katılıyor.`
+                : `Tebrikler, doğru tahmin!🎉<br>Minik ${CONFIG.babyName} aramıza katılıyor.`;
+
+    }
+    else{
+
+        revealMessage.innerHTML =
+            CONFIG.gender === "boy"
+                ? `İyi deneme, ama bilemedin!😄<br>Minik ${CONFIG.babyName} aramıza katılıyor.`
+                : `İyi deneme, ama bilemedin!😄<br>Minik ${CONFIG.babyName} aramıza katılıyor.`;
 
     }
 
