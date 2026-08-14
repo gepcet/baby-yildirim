@@ -39,7 +39,7 @@ function inflate(){
 
     clicks++;
 
-    if(clicks<3){
+    if(clicks<5){
 
         balloonScale += .25;
 
@@ -139,14 +139,6 @@ function showReveal(){
         stats.classList.remove("hidden");
 
         loadStats();
-
-        window.scrollTo({
-
-            top:document.body.scrollHeight,
-
-            behavior:"smooth"
-
-        });
 
     },1200);
 
