@@ -1,9 +1,9 @@
 // script.js
 
 const CONFIG = {
-    gender: "girl", //"boy",
-    babyName: "Ela", //"Aras",
-    babyNameDative: "Ela'ya" //"Aras'a"
+    gender: "boy", //"girl",
+    babyName: "Aras", //"Ela",
+    babyNameDative: "Aras'a" //"Ela'ya"
 };
 
 let prediction = "";
